@@ -1,0 +1,18 @@
+[
+    {
+        "username": "JuanC123",
+        "email": "camilo@mail.com",
+        "phone": "+764014755",
+        "name": "Juan",
+        "lastname": "Orjuela",
+        "password": "ed7c2e516c49a3fa82188353f6578e901515a1f383db3e4a887e94494c1fe2bc"
+    },
+    {
+        "username": "juanito",
+        "email": "juanito@correo.com",
+        "phone": "+123456789",
+        "name": "juan",
+        "lastname": "Moyano",
+        "password": "dac9f277ba18cdd56967e97e77d9b0db46afef7829206e5afb119a59d2c1216f"
+    }
+]

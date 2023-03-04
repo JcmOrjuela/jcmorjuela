@@ -1,0 +1,9 @@
+header a {
+    color: white;
+    text-decoration: none;
+    padding: 2rem;
+}
+
+li {
+    list-style: none;
+}
