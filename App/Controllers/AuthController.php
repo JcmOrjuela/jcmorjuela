@@ -30,7 +30,7 @@ class AuthController
     public function register(Request $r)
     {
         try {
-            
+
             $r->validate([
                 "username" => "required|regex:[a-zA-Z]|max:20",
                 "email" => "required|email",
@@ -53,7 +53,7 @@ class AuthController
 
             return view('Auth/login',);
         } catch (\Exception $e) {
-            return view('Auth/login', [
+            return view('Auth/login', [], [
                 $e->getMessage()
             ]);
         }
@@ -73,12 +73,12 @@ class AuthController
             )) {
                 return view('home/home');
             } else {
-                return view('Auth/login', [
+                return view('Auth/login', [], [
                     "El Usuario o la Contraseña no son Válidos"
                 ]);
             }
         } catch (\Exception $e) {
-            return view('Auth/login', [
+            return view('Auth/login', [], [
                 $e->getMessage()
             ]);
         }

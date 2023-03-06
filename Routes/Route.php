@@ -11,16 +11,21 @@ class Route
 
         list($route, $controllerMethod) = $args;
         $controllerMethodParams = explode('@', $controllerMethod);
-
-        if (preg_match('/(\/\w+\/)\{\w+\}/i', $route)) {
-            $route = preg_replace('/(\/\w+\/)\{\w+\}/i', '$1anything', $route);
+        $patern = '(\/[a-zA-Z-._]+\/)\{\w+\}';
+        if (preg_match("/$patern/i", $route)) {
+            $route = preg_replace("/$patern/i", '$1anything', $route);
         }
 
         self::$map[strtoupper($method)][$route] = [
-            "route" => $route,
             "controller" => "\App\Controllers\\{$controllerMethodParams[0]}",
             "method" => $controllerMethodParams[1],
-            "arguments" => []
         ];
+
+        return self::class;
+    }
+
+    public static function middleware(string $middleware)
+    {
+        dd($middleware);
     }
 }

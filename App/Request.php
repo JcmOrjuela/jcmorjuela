@@ -19,9 +19,11 @@ class Request
 
         $this->requestMethod = requestMethod();
         $route = requestUri();
-        $id = preg_replace('/\/\w+\/(\d+)/i', '$1', $route);
-        $route = preg_replace('/(\/\w+\/)\d+/i', '$1anything', $route);
+        $patern = '(\/[a-zA-Z-._]+\/)(\w+)';
 
+        $id = preg_replace("/$patern/i", '$2', $route);
+        $route = preg_replace("/$patern/i", '$1anything', $route);
+        
         switch ($this->requestMethod) {
             case 'POST':
                 $this->params = [
@@ -45,7 +47,6 @@ class Request
 
                 break;
         }
-
         $this->service = $route;
         $this->loadExternalData();
     }

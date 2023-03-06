@@ -7,6 +7,9 @@
             <ul class="d-flex text-white text-decorate-none">
                 <li><a href="/jcmovies/login"> Login</a></li>
                 <li><a href="/jcmovies/register"> Registro</a></li>
+
+                <li><a href="/jcmovies/logout"> salir</a></li>
+                <li><a href="/jcmovies/my-movies" > Mis Peliculas</a></li>
             </ul>
         </div>
     </div>

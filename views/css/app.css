@@ -7,3 +7,7 @@ header a {
 li {
     list-style: none;
 }
+
+.hide {
+    display: none;
+}

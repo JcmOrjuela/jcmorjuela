@@ -83,9 +83,9 @@ function toJson($data)
     return json_encode($data);
 }
 
-function view($view, $errors = null)
+function view($view, $params = [], $errors = null)
 {
-    return new \App\Response($view, $errors);
+    return new \App\Response($view, $params, $errors);
 }
 function viewPath($view)
 {
@@ -100,4 +100,16 @@ function maxString(string $str, int $len)
 function minString(string $str, int $len)
 {
     return (strlen($str) <= $len);
+}
+
+function response()
+{
+    return new class
+    {
+        public function json(array $data)
+        {
+            header('Content-Type: aplication/json');
+            echo json_encode($data);
+        }
+    };
 }

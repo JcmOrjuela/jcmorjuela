@@ -1,0 +1,26 @@
+[
+    {
+        "imdbID": "tt0848228",
+        "user_id": 4,
+        "Poster": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+        "Title": "The Avengers",
+        "Type": "movie",
+        "Year": "2012"
+    },
+    {
+        "imdbID": "tt4154756",
+        "user_id": 4,
+        "Poster": "https:\/\/m.media-amazon.com\/images\/M\/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
+        "Title": "Avengers: Infinity War",
+        "Type": "movie",
+        "Year": "2018"
+    },
+    {
+        "imdbID": "tt2455546",
+        "user_id": 4,
+        "Poster": "https:\/\/m.media-amazon.com\/images\/M\/MV5BMTY0NTUyMDQwOV5BMl5BanBnXkFtZTgwNjAwMTA0MDE@._V1_SX300.jpg",
+        "Title": "Avengers Assemble",
+        "Type": "series",
+        "Year": "2012\u20132019"
+    }
+]

@@ -18,13 +18,13 @@ class Model
         $this->path = dirname(__DIR__, 2) . "/Database/{$table}.json";
 
         if (file_exists($this->path)) {
-            $this->getContent();
+            $this->getUpdatedContent();
         }
     }
 
     public function create(array $data)
     {
-        $this->getContent();
+        $this->getUpdatedContent();
         $this->content[] = $data;
 
         $this->putContent();
@@ -32,7 +32,7 @@ class Model
 
     public function read($id)
     {
-        $this->getContent();
+        $this->getUpdatedContent();
 
         return $this->fillChild($this->content[$id]);
     }
@@ -43,14 +43,14 @@ class Model
 
     public function delete($id)
     {
-        $this->getContent();
+        $this->getUpdatedContent();
         unset($this->content[$id]);
         $this->putContent();
     }
 
     public function all()
     {
-        $this->getContent();
+        $this->getUpdatedContent();
         $result = [];
         foreach ($this->content as $data) {
             $result[] = $this->fillChild($data);
@@ -62,24 +62,28 @@ class Model
 
     public function search(string $needle, string $field)
     {
-        $this->getContent();
+        $this->getUpdatedContent();
         $data = array_filter($this->content, function ($register) use ($needle, $field) {
             return $needle == $register[$field];
         });
 
-        if (!empty($data)) {
-            $data = reset($data);
-            return $this->fillChild($data);
-        }
+        $data = reset($data);
+
+        return $this->fillChild(($data) ? $data : []);
     }
 
-    private function getContent()
+    private function getUpdatedContent()
     {
         $this->content = toArray(file_get_contents($this->path));
+    }
+    public function getContent()
+    {
+        return $this->content;
     }
 
     private function putContent()
     {
+        $this->content = array_values($this->content);
         file_put_contents($this->path, json_encode($this->content));
     }
 
@@ -87,9 +91,11 @@ class Model
     {
         $instance = new $this->child;
 
-        foreach ($instance->fillable as $field) {
-            $set = "set{$field}";
-            $instance->{$set}($data[$field]);
+        if (!empty($data)) {
+            foreach ($instance->fillable as $field) {
+                $set = "set{$field}";
+                $instance->{$set}($data[$field]);
+            }
         }
 
         return $instance;
